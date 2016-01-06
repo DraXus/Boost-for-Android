@@ -283,9 +283,9 @@ case "$NDK_RN" in
 		TOOLSET=gcc-androidR8e
 		;;
 	"10e-rc4 (64-bit)")
-		TOOLCHAIN=llvm-3.6
-		CXXPATH=$AndroidNDKRoot/toolchains/${TOOLCHAIN}/prebuilt/${PlatformOS}-x86_64/bin/clang++
-		TOOLSET=clang-android${ARCH}
+		TOOLCHAIN=${TOOLCHAIN:-arm-linux-androideabi-4.9}
+		CXXPATH=$AndroidNDKRoot/toolchains/${TOOLCHAIN}/prebuilt/${PlatformOS}-x86_64/bin/arm-linux-androideabi-g++
+		TOOLSET=gcc-android${ARCH}
 		;;
 	*)
 		echo "Undefined or not supported Android NDK version!"
@@ -371,6 +371,7 @@ then
   PATCH_BOOST_DIR=$PROGDIR/patches/boost-${BOOST_VER}
 
   cp configs/user-config-boost-${BOOST_VER}.jam $BOOST_DIR/tools/build/src/user-config.jam
+  cp configs/user-config-boost-${BOOST_VER}.jam $HOME/user-config.jam
 
   for dir in $PATCH_BOOST_DIR; do
     if [ ! -d "$dir" ]; then

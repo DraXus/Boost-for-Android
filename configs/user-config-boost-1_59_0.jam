@@ -83,9 +83,9 @@ $(AndroidNDKRoot)/toolchains/llvm-3.6/prebuilt/linux-x86_64/bin/clang++
 <cxxflags>-std=gnu++14
 ;
 
-using clang : androidarmv7a
+using gcc : androidarmv7a
 :
-$(AndroidNDKRoot)/toolchains/llvm-3.6/prebuilt/linux-x86_64/bin/clang++
+$(AndroidNDKRoot)/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-g++
 :
 <compileflags>-fPIC
 <compileflags>-DANDROID
@@ -93,10 +93,11 @@ $(AndroidNDKRoot)/toolchains/llvm-3.6/prebuilt/linux-x86_64/bin/clang++
 <compileflags>-frtti
 <compileflags>-fexceptions
 <compileflags>--sysroot="$(AndroidNDKRoot)/platforms/android-21/arch-arm"
-<compileflags>-I$(AndroidNDKRoot)/sources/cxx-stl/llvm-libc++/libcxx/include
+<compileflags>-I$(AndroidNDKRoot)/sources/cxx-stl/gnu-libstdc++/4.9/include
+<compileflags>-I$(AndroidNDKRoot)/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include
 <compileflags>-I$(AndroidNDKRoot)/sources/cxx-stl/gabi++/include
-<compileflags>-I$(AndroidNDKRoot)/sources/cxx-stl/../android/support/include
-<compileflags>--gcc-toolchain="$(AndroidNDKRoot)/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64"
+<compileflags>-I$(AndroidNDKRoot)/sources/cxx-stl/android/support/include
+#<compileflags>--gcc-toolchain="$(AndroidNDKRoot)/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64"
 <compileflags>--target=armv7-none-linux-android
 <compileflags>-fpic
 <compileflags>-ffunction-sections
